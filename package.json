@@ -1,0 +1,63 @@
+{
+  "name": "tempmails",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "pretypecheck": "prisma generate",
+    "typecheck": "tsc --noEmit",
+    "pretest": "prisma generate",
+    "test": "vitest run tests/unit.test.ts tests/editorial.test.tsx tests/ads.test.ts",
+    "content:sync": "node --import tsx scripts/sync-content.ts",
+    "content:trends": "python3 scripts/discover-trends.py",
+    "site:set": "node --env-file-if-exists=.env scripts/set-site-identity.mjs",
+    "seo:check": "node scripts/seo-check.mjs",
+    "test:integration": "vitest run tests/integration.test.ts",
+    "test:browser": "vitest run tests/custom-inbox.test.ts",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "node --env-file-if-exists=.env --import tsx prisma/seed.ts",
+    "owner:create": "node --env-file-if-exists=.env --import tsx scripts/create-owner.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.0",
+    "@types/nodemailer": "^8.0.1",
+    "file-type": "^21.0.0",
+    "ioredis": "^5.8.2",
+    "lucide-react": "^0.468.0",
+    "mailparser": "^3.7.5",
+    "next": "16.3.5",
+    "nodemailer": "^7.0.13",
+    "otpauth": "^9.4.1",
+    "qrcode": "^1.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sanitize-html": "^2.17.0",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.56.1",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/mailparser": "^3.4.6",
+    "@types/node": "^24.10.0",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/sanitize-html": "^2.16.0",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "16.3.5",
+    "prettier": "^3.6.2",
+    "prisma": "^6.19.0",
+    "tailwindcss": "^4.1.17",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.11"
+  },
+  "overrides": {
+    "deepmerge-ts": "^8.0.0"
+  }
+}

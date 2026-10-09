@@ -1,0 +1,22 @@
+name = "tempmails-inbound"
+main = "src.ts"
+compatibility_date = "2026-09-01"
+[vars]
+# Stable Vercel origin; custom-domain DNS is configured separately.
+APP_URL = "https://tempmails-zeta.vercel.app"
+MAX_RAW_BYTES = "1500000"
+[[r2_buckets]]
+binding = "SPOOL"
+bucket_name = "tempmails-mail-spool"
+[[queues.producers]]
+binding = "MAIL_QUEUE"
+queue = "tempmails-inbound"
+[[queues.consumers]]
+queue = "tempmails-inbound"
+max_batch_size = 5
+max_batch_timeout = 5
+max_retries = 8
+dead_letter_queue = "tempmails-failed"
+
+[triggers]
+crons = ["*/5 * * * *"]

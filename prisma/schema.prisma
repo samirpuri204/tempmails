@@ -1,0 +1,249 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  OWNER
+  ADMINISTRATOR
+  EDITOR
+  SUPPORT
+  VIEWER
+}
+
+model Domain {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  active      Boolean  @default(false)
+  selectable  Boolean  @default(true)
+  maintenance Boolean  @default(false)
+  isDefault   Boolean  @default(false)
+  health      Json?
+  createdAt   DateTime @default(now())
+  inboxes     Inbox[]
+}
+
+model Inbox {
+  id         String       @id @default(cuid())
+  publicId   String       @unique @default(uuid())
+  username   String
+  domainId   String
+  domain     Domain       @relation(fields: [domainId], references: [id], onDelete: Restrict)
+  ipHash     String
+  deviceHash String
+  suspended  Boolean      @default(false)
+  createdAt  DateTime     @default(now())
+  expiresAt  DateTime
+  tokens     InboxToken[]
+  messages   Message[]
+  outbound   OutboundMessage[]
+
+  @@unique([username, domainId])
+  @@index([expiresAt])
+  @@index([ipHash, createdAt])
+}
+
+model AddressTombstone {
+  hash      String   @id
+  createdAt DateTime @default(now())
+}
+
+model InboxToken {
+  id        String   @id @default(cuid())
+  hash      String   @unique
+  kind      String
+  inboxId   String
+  inbox     Inbox    @relation(fields: [inboxId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@index([inboxId])
+}
+
+model Message {
+  id          String       @id @default(cuid())
+  publicId    String       @unique @default(uuid())
+  inboxId     String
+  inbox       Inbox        @relation(fields: [inboxId], references: [id], onDelete: Cascade)
+  providerKey String       @unique
+  sender      String
+  senderName  String
+  recipient   String
+  subject     String
+  text        String
+  html        String
+  size        Int
+  readAt      DateTime?
+  receivedAt  DateTime     @default(now())
+  attachments Attachment[]
+
+  @@index([inboxId, receivedAt])
+  @@index([sender])
+}
+
+// Mail sent from a temporary address. Content is kept only as long as the
+// inbox exists (cascade) so moderators can act on abuse reports.
+model OutboundMessage {
+  id         String   @id @default(cuid())
+  publicId   String   @unique @default(uuid())
+  inboxId    String
+  inbox      Inbox    @relation(fields: [inboxId], references: [id], onDelete: Cascade)
+  sender     String
+  recipient  String
+  subject    String
+  text       String
+  size       Int
+  delivery   String
+  status     String
+  providerId String?
+  error      String?
+  ipHash     String
+  createdAt  DateTime @default(now())
+
+  @@index([inboxId, createdAt])
+  @@index([recipient])
+  @@index([createdAt])
+}
+
+model Attachment {
+  id         String  @id @default(cuid())
+  publicId   String  @unique @default(uuid())
+  messageId  String
+  message    Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  name       String
+  mime       String
+  size       Int
+  bytes      Bytes
+  scanStatus String
+
+  @@index([messageId])
+}
+
+model Blocklist {
+  id        String   @id @default(cuid())
+  kind      String
+  value     String
+  createdAt DateTime @default(now())
+
+  @@unique([kind, value])
+}
+
+model AbuseReport {
+  id         String   @id @default(uuid())
+  messageRef String
+  reason     String
+  ipHash     String
+  status     String   @default("OPEN")
+  createdAt  DateTime @default(now())
+
+  @@index([status, createdAt])
+}
+
+model AdminUser {
+  id             String         @id @default(uuid())
+  email          String         @unique
+  passwordHash   String
+  role           Role           @default(VIEWER)
+  active         Boolean        @default(true)
+  totpSecret     String?
+  pendingTotp    String?
+  recoveryHashes String[]
+  lastTotpStep   BigInt         @default(0)
+  createdAt      DateTime       @default(now())
+  sessions       AdminSession[]
+}
+
+model AdminSession {
+  id        String    @id @default(uuid())
+  hash      String    @unique
+  userId    String
+  user      AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ipHash    String
+  createdAt DateTime  @default(now())
+  lastSeen  DateTime  @default(now())
+  expiresAt DateTime
+
+  @@index([expiresAt])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  actor     String
+  action    String
+  target    String
+  ipHash    String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+model LoginHistory {
+  id          String   @id @default(uuid())
+  accountHash String
+  ipHash      String
+  success     Boolean
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+model WebsiteSetting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}
+
+model SeoPage {
+  slug        String   @id
+  title       String
+  description String
+  body        String
+  faqs        Json
+  published   Boolean  @default(true)
+  updatedAt   DateTime @updatedAt
+}
+
+model BlogPost {
+  slug        String   @id
+  title       String
+  description String
+  body        String
+  metaTitle   String?
+  category    String   @default("Privacy")
+  author      String   @default("TempMails")
+  publishedAt DateTime?
+  reviewedAt  DateTime?
+  sources     Json     @default("[]")
+  trending    Boolean  @default(false)
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published, publishedAt])
+}
+
+model Redirect {
+  source      String  @id
+  destination String
+  permanent   Boolean @default(true)
+}
+
+model SystemMetric {
+  id        String   @id @default(cuid())
+  kind      String
+  value     Int      @default(1)
+  createdAt DateTime @default(now())
+
+  @@index([kind, createdAt])
+}
+
+model WebhookEvent {
+  key       String   @id
+  status    String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}

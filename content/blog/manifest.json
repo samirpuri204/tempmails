@@ -1,0 +1,246 @@
+[
+  {
+    "slug": "temporary-email-vs-email-aliases",
+    "title": "Temporary email vs. email aliases: which one fits the task?",
+    "metaTitle": "Temporary email vs email aliases | TempMails",
+    "description": "Compare temporary email with email aliases: how each hides your address, what expires, and which one to use for signups, testing, and long-term accounts.",
+    "category": "Privacy",
+    "author": "TempMails",
+    "publishedAt": null,
+    "reviewedAt": null,
+    "sources": [
+      {
+        "title": "Email addresses and aliases — Proton Mail support",
+        "url": "https://proton.me/support/addresses-and-aliases"
+      },
+      {
+        "title": "Activate Firefox Relay — Mask your email address — Mozilla Support",
+        "url": "https://support.mozilla.org/en-US/kb/activate-firefox-relay-mask-your-email-address"
+      },
+      {
+        "title": "How to use Hide My Email with Sign in with Apple — Apple Support",
+        "url": "https://support.apple.com/en-us/105078"
+      }
+    ],
+    "trending": false,
+    "file": "content/blog/temporary-email-vs-email-aliases.md"
+  },
+  {
+    "slug": "apple-hide-my-email-how-it-works",
+    "title": "How Apple Hide My Email works and when to use it",
+    "metaTitle": "How Apple Hide My Email works | TempMails",
+    "description": "How Apple Hide My Email generates relay addresses and forwards mail, how to manage or retire them, and the limits to plan for before you rely on one.",
+    "category": "Privacy",
+    "author": "TempMails",
+    "publishedAt": null,
+    "reviewedAt": null,
+    "sources": [
+      {
+        "title": "How to use Hide My Email with Sign in with Apple — Apple Support",
+        "url": "https://support.apple.com/en-us/105078"
+      },
+      {
+        "title": "Set up and use Hide My Email in iCloud+ on all your devices — Apple Support Guide",
+        "url": "https://support.apple.com/guide/icloud/set-up-hide-my-email-mm9d9012c9e8/icloud"
+      },
+      {
+        "title": "Stop using, reactivate, or delete a Hide My Email address — Apple Support Guide",
+        "url": "https://support.apple.com/guide/icloud/stop-using-or-reactivate-addresses-mm3adb030cbf/icloud"
+      }
+    ],
+    "trending": false,
+    "file": "content/blog/apple-hide-my-email-how-it-works.md"
+  },
+  {
+    "slug": "gmail-third-party-email-changes-2027",
+    "title": "Gmail is ending \"Send as\" for third-party accounts: what changes in January 2027",
+    "metaTitle": "Gmail drops third-party Send as in 2027 | TempMails",
+    "description": "Gmail removes third-party \"Send as,\" Gmailify, and POP on the web in January 2027. What changes, what survives, and how to migrate before the deadline.",
+    "category": "Email updates",
+    "author": "TempMails",
+    "publishedAt": null,
+    "reviewedAt": null,
+    "sources": [
+      {
+        "title": "Learn about changes to third-party email account support in Gmail — Google Help",
+        "url": "https://support.google.com/mail/answer/17101213"
+      },
+      {
+        "title": "Learn about upcoming changes to Gmailify & POP in Gmail — Google Help",
+        "url": "https://support.google.com/mail/answer/16604719"
+      }
+    ],
+    "trending": true,
+    "file": "content/blog/gmail-third-party-email-changes-2027.md"
+  },
+  {
+    "slug": "gmail-ai-overviews-search-rollout",
+    "title": "Gmail search AI Overviews are going global: what the September 2026 rollout means",
+    "metaTitle": "Gmail AI Overviews go global | TempMails",
+    "description": "AI Overviews in Gmail search went global after Google's September 15, 2026 announcement. Who is eligible, which settings control it, and what to check.",
+    "category": "Email updates",
+    "author": "TempMails",
+    "publishedAt": null,
+    "reviewedAt": null,
+    "sources": [
+      {
+        "title": "Gmail Search's AI Overviews now available globally — Google Workspace Updates",
+        "url": "https://workspaceupdates.googleblog.com/2026/09/gmail-searchs-ai-overviews-now-available-globally.html"
+      },
+      {
+        "title": "Generative AI in Google Workspace Privacy Hub — Google Workspace Knowledge",
+        "url": "https://knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub"
+      },
+      {
+        "title": "Gmail Search AI Overviews Go Global for Paid English Users — Technobezz",
+        "url": "https://www.technobezz.com/news/gmail-search-ai-overviews-global-paid-users"
+      }
+    ],
+    "trending": true,
+    "file": "content/blog/gmail-ai-overviews-search-rollout.md"
+  },
+  {
+    "slug": "brevo-saml-phishing-september-2026",
+    "title": "The Brevo SAML phishing campaign: what happened and how to stay safe",
+    "metaTitle": "Brevo SAML phishing: what to know | TempMails",
+    "description": "The September 2026 Brevo SAML SSO phishing incident: what Brevo disclosed, who was affected, and the habits that catch this class of convincing attack.",
+    "category": "Safety",
+    "author": "TempMails",
+    "publishedAt": null,
+    "reviewedAt": null,
+    "sources": [
+      {
+        "title": "Attacker gained access to client accounts — Brevo status write-up",
+        "url": "https://status.brevo.com/incidents/pawbvhq8/write-up"
+      },
+      {
+        "title": "Security incident at Brevo, our third-party email provider — Trezor",
+        "url": "https://trezor.io/blog/news/security-incident-at-brevo-our-third-party-email-provider"
+      },
+      {
+        "title": "Trezor Says 347,000 Users Received Phishing Emails After Brevo Hack — SecurityWeek",
+        "url": "https://www.securityweek.com/trezor-says-347000-users-received-phishing-emails-after-brevo-hack/"
+      },
+      {
+        "title": "Crypto customers targeted by scammers after email marketing provider breach — Malwarebytes",
+        "url": "https://www.malwarebytes.com/blog/news/2026/09/crypto-customers-targeted-by-scammers-after-email-marketing-provider-breach"
+      }
+    ],
+    "trending": true,
+    "file": "content/blog/brevo-saml-phishing-september-2026.md"
+  },
+  {
+    "slug": "temporary-email-qa-testing-guide",
+    "title": "Using temporary email for QA and testing without creating risk",
+    "metaTitle": "Temp mail for QA and testing | TempMails",
+    "description": "Use temporary email safely in QA and testing: what a disposable inbox can verify, what it cannot, and how to avoid exposing real data or secrets.",
+    "category": "Safety",
+    "author": "TempMails",
+    "publishedAt": null,
+    "reviewedAt": null,
+    "sources": [
+      {
+        "title": "Email sender guidelines — Google Workspace / Gmail Help",
+        "url": "https://support.google.com/a/answer/81126"
+      },
+      {
+        "title": "OWASP Web Security Testing Guide",
+        "url": "https://owasp.org/www-project-web-security-testing-guide/"
+      },
+      {
+        "title": "NIST SP 800-115: Technical Guide to Information Security Testing and Assessment",
+        "url": "https://csrc.nist.gov/pubs/sp/800/115/final"
+      }
+    ],
+    "trending": false,
+    "file": "content/blog/temporary-email-qa-testing-guide.md"
+  },
+  {
+    "slug": "is-temporary-email-safe",
+    "title": "Is temporary email safe? A threat model, not a verdict",
+    "metaTitle": "Is temporary email safe? | TempMails",
+    "description": "What a disposable inbox protects against — list resale, inbox exposure, one-off signups — and what it does not: network identification, recovery, remote images.",
+    "category": "Safety",
+    "author": "TempMails",
+    "publishedAt": "2026-09-17T18:55:53.287Z",
+    "reviewedAt": "2026-09-17T18:55:53.287Z",
+    "sources": [
+      {
+        "title": "How to use Hide My Email with Sign in with Apple — Apple Support",
+        "url": "https://support.apple.com/en-us/105078"
+      },
+      {
+        "title": "Email addresses and aliases — Proton Mail support",
+        "url": "https://proton.me/support/addresses-and-aliases"
+      },
+      {
+        "title": "How To Recognize and Avoid Phishing Scams — FTC Consumer Advice",
+        "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams"
+      }
+    ],
+    "trending": false,
+    "file": "content/blog/is-temporary-email-safe.md"
+  },
+  {
+    "slug": "email-tracking-pixels",
+    "title": "How email tracking pixels work, and why TempMails blocks remote images",
+    "metaTitle": "Email tracking pixels explained | TempMails",
+    "description": "What a tracking pixel actually reports — an open, a rough time, approximate location from an IP, a client guess — what it cannot, and how blocking remote images stops it.",
+    "category": "Privacy",
+    "author": "TempMails",
+    "publishedAt": "2026-09-17T18:55:53.287Z",
+    "reviewedAt": "2026-09-17T18:55:53.287Z",
+    "sources": [
+      {
+        "title": "<img> HTML image embed element — MDN Web Docs",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img"
+      },
+      {
+        "title": "Referer header — MDN Web Docs",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referer"
+      }
+    ],
+    "trending": false,
+    "file": "content/blog/email-tracking-pixels.md"
+  },
+  {
+    "slug": "when-not-to-use-temporary-email",
+    "title": "When you should not use temporary email",
+    "metaTitle": "When not to use temp mail | TempMails",
+    "description": "The honest counterpart to every \"why use temp mail\" article: payments, receipts, identity checks, account recovery and anything you must revisit belong on a durable address.",
+    "category": "Safety",
+    "author": "TempMails",
+    "publishedAt": "2026-09-17T18:55:53.287Z",
+    "reviewedAt": "2026-09-17T18:55:53.287Z",
+    "sources": [
+      {
+        "title": "How to use Hide My Email with Sign in with Apple — Apple Support",
+        "url": "https://support.apple.com/en-us/105078"
+      },
+      {
+        "title": "Email addresses and aliases — Proton Mail support",
+        "url": "https://proton.me/support/addresses-and-aliases"
+      }
+    ],
+    "trending": false,
+    "file": "content/blog/when-not-to-use-temporary-email.md"
+  },
+  {
+    "slug": "can-temporary-email-be-traced",
+    "title": "Can temporary email be traced? What each party can actually see",
+    "metaTitle": "Can temp mail be traced? | TempMails",
+    "description": "Traceability in layers: what this deployment stores, what the site you signed up to keeps, what your network sees, and what would actually be needed to connect an address to a person.",
+    "category": "Privacy",
+    "author": "TempMails",
+    "publishedAt": "2026-09-17T18:55:53.287Z",
+    "reviewedAt": "2026-09-17T18:55:53.287Z",
+    "sources": [
+      {
+        "title": "Referer header — MDN Web Docs",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referer"
+      }
+    ],
+    "trending": false,
+    "file": "content/blog/can-temporary-email-be-traced.md"
+  }
+]
