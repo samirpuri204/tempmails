@@ -382,8 +382,8 @@ to run against the wrong origin.
 
 A curated snapshot of the project — the application source, the nine
 operational documents and this audit — is published at
-**https://github.com/samirpuri204/tempmails** (public, 128 files, 1.5 MB,
-default branch `main`, homepage set to the live site).
+**https://github.com/samirpuri204/tempmails** (public, MIT licensed, 130 files,
+1.5 MB, default branch `main`, homepage set to the live site).
 
 The snapshot deliberately excludes: all environment files (only `.env.example`
 is included), the private content backups, the internal advertising and
