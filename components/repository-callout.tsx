@@ -1,4 +1,4 @@
-import { Github, ArrowRight } from "lucide-react";
+import { Github } from "lucide-react";
 import { BRAND } from "@/lib/brand";
 
 /**
@@ -12,32 +12,10 @@ import { BRAND } from "@/lib/brand";
  * `variant="panel"` is the standing callout used on the Company and AI-roadmap
  * pages; `variant="inline"` is the compact form used in asides and footers.
  */
-export default function RepositoryCallout({
-  variant = "panel",
-  note,
-}: {
-  variant?: "panel" | "inline";
-  /** Page-specific reason to read the code; falls back to a general one. */
-  note?: string;
-}) {
+export default function RepositoryCallout({ note }: { note?: string }) {
   const body =
     note ||
     `Every claim on this site can be checked against the code that makes it: the receiving pipeline, the expiry and deletion behaviour described in the privacy policy, and the AI plans on this page. It is published under the ${BRAND.license} licence, so any developer can read, run, fork or build on it.`;
-
-  if (variant === "inline") {
-    return (
-      <a
-        className="repo-inline"
-        href={BRAND.repository}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <Github size={16} aria-hidden="true" />
-        <span>Open source on GitHub</span>
-        <ArrowRight size={14} aria-hidden="true" />
-      </a>
-    );
-  }
 
   return (
     <section className="repo-panel" aria-labelledby="open-source">

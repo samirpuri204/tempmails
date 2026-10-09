@@ -216,6 +216,20 @@ The operator block above the footer now names the person and the country and
 links to the company summary, so the identity is reachable from the page a
 visitor actually lands on.
 
+#### Identity card (redesign)
+
+That block began as three loose paragraphs and read as an afterthought. It is now
+a card — monogram, eyebrow, headline, a four-item fact grid (operator, operating
+location, launched, licence) and a row of pill actions led by a filled
+**Open source on GitHub** button. Colour, spacing and radii come from the
+existing design tokens, so it needed no dark-theme special case beyond the glow.
+
+The redesign is also a discoverability change, which matters more than the
+styling: **every fact is a real anchor in the server-rendered HTML**, so
+`/company`, `/ai-roadmap`, `/blog`, `/about`, the contact address and the
+repository are all reachable by a crawler that never executes JavaScript.
+Pressing the call to action is not required to find them.
+
 #### Defect found in production (fixed)
 
 The first version of that block placed two anchors side by side with no
@@ -252,6 +266,9 @@ stays consistent.
 | Organization structured data | Now carries name, URL, description, `foundingDate`, `founder` (Person with job title), `email`, country, and a `ContactPoint` — all verified values, no `sameAs` unless real profiles exist |
 | Breadcrumbs | `BreadcrumbList` mirrors the visible trail |
 | HTTPS and security headers | HSTS, `nosniff`, `X-Frame-Options: DENY`, a strict referrer policy, a permissions policy, and a nonce-based CSP — unchanged |
+| Primary-page discovery | An `ItemList` of `SiteNavigationElement` entries names the ten primary pages (home, about, company, AI roadmap, contact, guides, FAQ, privacy, terms, acceptable use) with absolute URLs, so a crawler is told which pages describe the operator rather than left to infer it from anchor text |
+| Crawlable without JavaScript | Every link in the homepage identity card — including `/company`, `/ai-roadmap` and the repository — is a real `href` in the server-rendered HTML; nothing is behind a click handler |
+| Multiple crawl paths | The repository is linked from the homepage card, the footer navigation, the Company page, the AI-roadmap page, `/about` company facts, and the Organization's `sameAs` |
 | Login-free access | Company, legal and policy pages are fully readable without an account |
 | Mobile and accessibility | New markup uses definition lists, fieldsets, real labels and `aria-live` status regions; `role="alert"` on errors; focus-visible outlines on every new control |
 
@@ -278,7 +295,8 @@ endpoint changed its contract.
 - `lib/contact.ts` — contact form schema, delivery and recipient resolution
 - `components/company-info.tsx` — company summary block (`full` / `compact`)
 - `components/contact-form.tsx` — client form with states and Turnstile
-- `components/repository-callout.tsx` — highlighted public-source panel and inline link, driven by `lib/brand.ts`
+- `components/repository-callout.tsx` — highlighted public-source panel, driven by `lib/brand.ts`
+- `components/home-identity.tsx` — the homepage operator/identity card, every fact an anchor
 - `LICENSE` — MIT
 - `scripts/set-site-identity.mjs` — guarded operator script for the stored site name and contact address
 - `docs/STARTUP-READINESS-AUDIT.md` — this report

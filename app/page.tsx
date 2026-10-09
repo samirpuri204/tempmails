@@ -1,14 +1,17 @@
 import { headers } from "next/headers";
 import { cache } from "react";
-import Link from "next/link";
-import { BRAND } from "@/lib/brand";
 import HomeSeo from "@/components/home-seo";
-import RepositoryCallout from "@/components/repository-callout";
+import HomeIdentity from "@/components/home-identity";
 import Inbox from "@/components/inbox";
 import { settings, defaults } from "@/lib/settings";
 import { siteOrigin } from "@/lib/site-url";
 import { organizationSchema, founderSchema } from "@/lib/company-schema";
-import { SITE_NAME, SITE_ALTERNATE_NAMES, absoluteAsset } from "@/lib/seo";
+import {
+  SITE_NAME,
+  SITE_ALTERNATE_NAMES,
+  absoluteAsset,
+  siteNavigationSchema,
+} from "@/lib/seo";
 
 const get = cache(async () => {
   try {
@@ -77,6 +80,10 @@ export default async function Home() {
         publisher: { "@id": `${siteOrigin()}/#organization` },
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       },
+      // Names the pages that describe the operator and the product as a
+      // navigation list, so a crawler does not have to infer that /company,
+      // /ai-roadmap and the rest are primary pages rather than incidental ones.
+      siteNavigationSchema(s.name || SITE_NAME),
     ],
   };
   return (
@@ -115,35 +122,22 @@ export default async function Home() {
           srcDoc={`<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; connect-src 'none';"><script>${s.customScript.replace(/<\/script/gi, "<\\/script")}</script>`}
         />
       )}
-      {/* The operator is reachable from the page every visitor lands on. The
-          address falls back to the confirmed business mailbox rather than
-          disappearing when the stored setting is empty, and the company link
-          points at the verification-friendly summary. */}
-      <aside className="content-page homepage-contact">
-        {/* Each item is its own block. Rendered as adjacent inline anchors the
-            first version of this aside read as a single run-on string,
-            "founder@tempmails.liveCompany information". */}
-        <p>
-          {BRAND.name} is operated by {BRAND.founder} in {BRAND.country}.
-          Business enquiries:{" "}
-          <a href={`mailto:${s.contactEmail || BRAND.email}`}>
-            {s.contactEmail || BRAND.email}
-          </a>
-        </p>
-        <p>
-          <Link href="/company">Company information</Link>
-        </p>
-        <p>
-          <RepositoryCallout variant="inline" />
-        </p>
-        {s.footerLinks.map((l) => (
-          <p key={l.url}>
-            <a href={l.url} rel="noopener noreferrer">
-              {l.label}
-            </a>
-          </p>
-        ))}
-      </aside>
+      {/* Who runs this, and where each claim can be checked. Rendered on the
+          page every visitor lands on, with real anchors in the server HTML so
+          the company, roadmap and repository are reachable by a crawler as well
+          as by a reader. */}
+      <HomeIdentity contactEmail={s.contactEmail} />
+      {(s.footerLinks.length > 0 || s.socialLinks.length > 0) && (
+        <aside className="content-page homepage-contact">
+          {s.footerLinks.map((l) => (
+            <p key={l.url}>
+              <a href={l.url} rel="noopener noreferrer">
+                {l.label}
+              </a>
+            </p>
+          ))}
+        </aside>
+      )}
     </>
   );
 }

@@ -72,3 +72,40 @@ export function breadcrumbSchema(trail: Crumb[]) {
     })),
   };
 }
+
+/**
+ * ItemList of the site's primary pages.
+ *
+ * The footer links these too, but a footer is where crawlers look last. Naming
+ * them as a navigation list makes the operator-describing pages (/about,
+ * /company), the roadmap and the policies first-class entries rather than links
+ * a crawler has to infer from anchor text. Every URL is built from
+ * `siteOrigin()`, so the list can never point at a different host to the
+ * canonicals.
+ */
+export function siteNavigationSchema(siteName: string) {
+  const pages: [string, string][] = [
+    ["Home", "/"],
+    ["About", "/about"],
+    ["Company information", "/company"],
+    ["AI roadmap", "/ai-roadmap"],
+    ["Contact", "/contact"],
+    ["Guides", "/blog"],
+    ["Frequently asked questions", "/faq"],
+    ["Privacy policy", "/privacy"],
+    ["Terms of service", "/terms"],
+    ["Acceptable use policy", "/acceptable-use"],
+  ];
+  const origin = siteOrigin();
+  return {
+    "@type": "ItemList",
+    "@id": `${origin}/#navigation`,
+    name: `${siteName}: main pages`,
+    itemListElement: pages.map(([name, path], index) => ({
+      "@type": "SiteNavigationElement",
+      position: index + 1,
+      name,
+      url: path === "/" ? origin : `${origin}${path}`,
+    })),
+  };
+}

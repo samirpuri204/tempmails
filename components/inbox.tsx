@@ -1,4 +1,5 @@
 "use client";
+import { BRAND } from "@/lib/brand";
 import AdPlacement from "./ads/placement";
 import AdsterraBanner from "./ads/adsterra-banner";
 import {
@@ -1129,6 +1130,11 @@ export default function Inbox({
           <Link href="/contact">{t.contactPage}</Link>
           <Link href="/ai-roadmap">{t.roadmapPage}</Link>
           <Link href="/blog">{t.journal}</Link>
+          {/* A second crawl path to the source repository, next to the policy
+              links rather than instead of them. */}
+          <a href={BRAND.repository} rel="noopener noreferrer" target="_blank">
+            {t.sourceCode}
+          </a>
           <Link href="/privacy">{t.privacy}</Link>
           <Link href="/terms">{t.terms}</Link>
           <Link href="/acceptable-use">{t.acceptable}</Link>
