@@ -376,6 +376,33 @@ The same values can be set in `/admin → Settings`; the script exists because i
 validates against the application's own limits, backs up, verifies and refuses
 to run against the wrong origin.
 
+### 8.2.1 Publication to GitHub
+
+A curated snapshot of the project — the application source, the nine
+operational documents and this audit — is published at
+**https://github.com/samirpuri204/tempmails** (public, 128 files, 1.5 MB,
+default branch `main`, homepage set to the live site).
+
+The snapshot deliberately excludes: all environment files (only `.env.example`
+is included), the private content backups, the internal advertising and
+outreach working directories, `node_modules`, and the internal operations log.
+A repository-wide scan for credential patterns was run before publishing and
+returned only documentation placeholders.
+
+Two identity corrections were applied immediately before publication, because
+publishing is the point at which a wrong identity becomes indexed and hard to
+recall:
+
+- the operator's published name was corrected everywhere it appeared — the
+  brand record, the page copy, the README and this document;
+- the retired personal domain was removed from all documentation, including
+  where it had appeared as historical evidence.
+
+The commit is authored as **Samir Giri \<founder@tempmails.live\>**, so the
+repository itself carries the same identity the site publishes. Note that the
+GitHub **account** name is a separate matter and can only be changed in GitHub's
+own account settings.
+
 ### 8.3 Contact form delivery
 
 The form needs a working provider **and** a sender address the provider has
