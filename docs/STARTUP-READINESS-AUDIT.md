@@ -278,6 +278,8 @@ endpoint changed its contract.
 - `lib/contact.ts` — contact form schema, delivery and recipient resolution
 - `components/company-info.tsx` — company summary block (`full` / `compact`)
 - `components/contact-form.tsx` — client form with states and Turnstile
+- `components/repository-callout.tsx` — highlighted public-source panel and inline link, driven by `lib/brand.ts`
+- `LICENSE` — MIT
 - `scripts/set-site-identity.mjs` — guarded operator script for the stored site name and contact address
 - `docs/STARTUP-READINESS-AUDIT.md` — this report
 
@@ -402,6 +404,33 @@ The commit is authored as **Samir Giri \<founder@tempmails.live\>**, so the
 repository itself carries the same identity the site publishes. Note that the
 GitHub **account** name is a separate matter and can only be changed in GitHub's
 own account settings.
+
+### 8.2.2 Open-sourcing the source
+
+The repository is published under the **MIT licence** (`LICENSE`, copyright
+Samir Giri), and the site now points at it from three places rather than hiding
+it in a footer:
+
+| Surface | Treatment |
+| --- | --- |
+| Homepage | Highlighted inline link in the operator block above the footer |
+| `/company` | A standing panel, plus **Source code** and **Licence** rows in the company facts, plus the repository in the Organization's `sameAs` |
+| `/ai-roadmap` | A standing panel, worded to make the point that a roadmap is cheap and the code is checkable |
+| Structured data | A `SoftwareSourceCode` node with `codeRepository` and `license`, alongside the Organization and founder nodes |
+
+All of it is driven by `BRAND.repository` and `BRAND.license` in
+`lib/brand.ts`, so a stale URL or a licence the project does not actually grant
+cannot be advertised on one page and contradicted on another.
+
+Two consequences the operator should be aware of, both stated in the README
+rather than left implicit:
+
+1. **MIT is permissive by design.** Anyone may run this software as their own
+   service under a different name, including commercially. That is the intent of
+   open-sourcing it.
+2. **The licence covers the software, not the service or the marks.** It grants
+   no right to the TempMails name, to the `tempmails.live` domain, or to the
+   operated instance.
 
 ### 8.3 Contact form delivery
 

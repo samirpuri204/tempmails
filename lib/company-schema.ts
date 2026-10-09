@@ -9,7 +9,7 @@
 // Fields that could not be verified are omitted rather than estimated:
 // no `sameAs` (no operator-owned profiles were supplied), no `address` beyond
 // the country, and no legal-entity identifiers.
-import { BRAND } from "./brand";
+import { BRAND, LICENSE_URL } from "./brand";
 import { siteOrigin } from "./site-url";
 
 export type OrganizationInput = {
@@ -42,6 +42,10 @@ export function organizationSchema({
   sameAs = [],
 }: OrganizationInput) {
   const origin = siteOrigin();
+  // The public source repository always counts as `sameAs`: it is the one
+  // operator-owned URL that corroborates the entity without asserting anything
+  // that cannot be checked. Any operator-supplied profiles are merged in.
+  const profiles = [...new Set([BRAND.repository, ...sameAs])];
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -64,14 +68,37 @@ export function organizationSchema({
       availableLanguage: ["en"],
     },
     ...(logoUrl ? { logo: logoUrl } : {}),
-    ...(sameAs.length ? { sameAs } : {}),
+    sameAs: profiles,
   };
 }
 
-/** The two nodes emitted as one `@graph` on company-identity pages. */
+/**
+ * The published source, as a first-class entity. Gives a crawler the repository
+ * and the licence directly rather than leaving them to be discovered from the
+ * page text.
+ */
+export function sourceCodeSchema(name: string) {
+  const origin = siteOrigin();
+  return {
+    "@type": "SoftwareSourceCode",
+    "@id": `${origin}/#source`,
+    name: `${name} source code`,
+    codeRepository: BRAND.repository,
+    license: LICENSE_URL,
+    programmingLanguage: ["TypeScript", "JavaScript"],
+    runtimePlatform: "Node.js",
+    author: { "@id": `${origin}/#organization` },
+  };
+}
+
+/** The nodes emitted as one `@graph` on company-identity pages. */
 export function companyGraph(input: OrganizationInput) {
   return {
     "@context": "https://schema.org",
-    "@graph": [organizationSchema(input), founderSchema()],
+    "@graph": [
+      organizationSchema(input),
+      founderSchema(),
+      sourceCodeSchema(input.name),
+    ],
   };
 }

@@ -1272,6 +1272,68 @@ html[data-theme="dark"] .contact-error {
 .contact-state h3 {
   margin-top: 0;
 }
+/* Public source repository. A standing, highlighted invitation to read the code
+   rather than a link buried in the footer, because the code is the evidence for
+   the claims the surrounding pages make. */
+.repo-panel {
+  margin-block: 34px;
+  padding: 22px 24px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  border-radius: var(--radius-md);
+  background: var(--soft);
+}
+.repo-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green);
+}
+.repo-panel-head h2 {
+  margin: 0;
+  font-size: var(--text-lg);
+}
+.repo-panel p {
+  margin: 12px 0 0;
+  line-height: 1.7;
+}
+.repo-panel-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+.repo-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 45px;
+  padding: 0 18px;
+  border-radius: var(--radius-sm);
+  background: var(--green);
+  color: var(--surface);
+  font-weight: 600;
+}
+.repo-cta:hover {
+  opacity: 0.92;
+}
+.repo-panel-url {
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+.repo-panel-url code {
+  overflow-wrap: anywhere;
+}
+.repo-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+  color: var(--green);
+}
+.repo-inline:hover span {
+  text-decoration: underline;
+}
 .skip-link {
   position: fixed;
   left: 10px;

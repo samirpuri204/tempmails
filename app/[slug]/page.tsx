@@ -10,6 +10,7 @@ import { settings, defaults } from "@/lib/settings";
 import ContentShell, { Body } from "@/components/content-shell";
 import CompanyInfo from "@/components/company-info";
 import ContactForm from "@/components/contact-form";
+import RepositoryCallout from "@/components/repository-callout";
 import { siteUrl } from "@/lib/site-url";
 import { BRAND } from "@/lib/brand";
 import { companyGraph } from "@/lib/company-schema";
@@ -99,6 +100,18 @@ export default async function Page({
           with each other, with the footer, or with the structured data. */}
       {(slug === "about" || slug === "company") && (
         <CompanyInfo variant={slug === "about" ? "compact" : "full"} />
+      )}
+      {/* The repository is the evidence behind the claims on these two pages,
+          so it is offered as a standing panel rather than a footer link. */}
+      {slug === "company" && (
+        <RepositoryCallout
+          note="Everything asserted above can be read in the code: the ingestion pipeline, the inbox and recovery model, the cleanup job that deletes expired mail with its inbox, and the publishing pipeline that renders this page. It is MIT licensed, so any developer is free to read it, run it, fork it or build a service on it."
+        />
+      )}
+      {slug === "ai-roadmap" && (
+        <RepositoryCallout
+          note="A roadmap is a statement of intent, and intent is cheap. The repository is public so the gap between what is described here and what is actually implemented can be checked directly — the abuse controls that are rule-based rather than model-based, the absence of any AI provider integration, and the commit history showing what shipped and when."
+        />
       )}
       {slug === "contact" && (
         <section className="contact-channels" aria-labelledby="contact-operator">

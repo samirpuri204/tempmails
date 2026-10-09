@@ -39,4 +39,16 @@ export const BRAND = {
   category: "Software & SaaS",
   /** Short, factual one-line description reused across pages. */
   tagline: "A private, no-signup temporary email inbox that expires on a timer.",
+  /**
+   * Public source repository. Published openly so that everything this site
+   * claims can be checked against the code that does it, rather than taken on
+   * trust. Referenced from the homepage, the About and Company pages, the AI
+   * roadmap and the structured data, all from this one value.
+   */
+  repository: "https://github.com/samirpuri204/tempmails",
+  /** SPDX identifier of the licence the source is published under. */
+  license: "MIT",
 } as const;
+
+/** Canonical URL of the licence file, derived from the repository. */
+export const LICENSE_URL = `${BRAND.repository}/blob/main/LICENSE`;

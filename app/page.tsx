@@ -3,6 +3,7 @@ import { cache } from "react";
 import Link from "next/link";
 import { BRAND } from "@/lib/brand";
 import HomeSeo from "@/components/home-seo";
+import RepositoryCallout from "@/components/repository-callout";
 import Inbox from "@/components/inbox";
 import { settings, defaults } from "@/lib/settings";
 import { siteOrigin } from "@/lib/site-url";
@@ -131,6 +132,9 @@ export default async function Home() {
         </p>
         <p>
           <Link href="/company">Company information</Link>
+        </p>
+        <p>
+          <RepositoryCallout variant="inline" />
         </p>
         {s.footerLinks.map((l) => (
           <p key={l.url}>

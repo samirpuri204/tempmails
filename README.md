@@ -6,6 +6,8 @@ A temporary address is issued in seconds so a verification code, a download link
 
 This repository is the real application — the receiving pipeline, the inbox, the admin console and the public site — not a mock with seeded fixtures.
 
+**[Open source under the MIT licence](https://github.com/samirpuri204/tempmails)** — read it, run it, fork it, build on it.
+
 ---
 
 ## The product, and who operates it
@@ -301,7 +303,27 @@ The application deploys to Vercel; the receiving pipeline runs on Cloudflare. A 
 
 ## Licence
 
-No licence is granted. This is a proprietary product; the source is published for transparency and review, not for reuse. All rights reserved.
+**MIT** — see [LICENSE](LICENSE).
+
+TempMails is open source. Any developer is free to read the code, run it, fork
+it, modify it and build on it, including commercially, provided the copyright
+notice and the licence text are kept. There is no warranty of any kind.
+
+Two things the licence does not cover, so they should not be confused with it:
+
+- **The hosted service.** The licence covers the software. It grants no right to
+  the TempMails name, the tempmails.live domain, or access to the operated
+  instance, which remains a service operated by one person.
+- **Content and marks.** The published copy, the documentation and the brand
+  identity are part of this repository and travel with the same licence, but
+  running a copy of the software does not make a deployment into TempMails.
+
+Because the licence is permissive, anyone may operate this software as a
+different service under a different name. That is the intent: the code is
+published so what the site claims can be checked, and so other developers can
+use it.
+
+## Contact
 
 ## Contact
 

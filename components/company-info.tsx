@@ -60,8 +60,29 @@ export default function CompanyInfo({
       value: "Actively maintained; running in production",
     },
     {
+      label: "Source code",
+      value: (
+        <a
+          href={BRAND.repository}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {BRAND.repository.replace(/^https?:\/\//, "")}
+        </a>
+      ),
+    },
+    {
+      label: "Licence",
+      value: (
+        <>
+          {BRAND.license} — open source, free to read, run, fork and build on
+        </>
+      ),
+    },
+    {
       label: "Public profiles",
-      value: "No third-party profiles are published",
+      value:
+        "No third-party social profiles are published; the source repository is the public record",
     },
   ];
 
